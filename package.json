@@ -1,0 +1,16 @@
+{
+  "name": "wpgraphql-pagination-repro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dupeids.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "graphql": "^16.6.0",
+    "graphql-request": "^5.0.0"
+  }
+}

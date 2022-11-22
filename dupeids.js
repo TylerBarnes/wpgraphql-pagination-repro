@@ -46,6 +46,6 @@ const reportDuplicateNodesIds = async ({
       nodeType,
     })
   } else {
-    console.log(`done`)
+    console.log(`done. ${ids.size} total nodes fetched`)
   }
 }

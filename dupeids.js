@@ -23,6 +23,7 @@ const reportDuplicateNodesIds = async ({
   query,
   endCursor = null,
   ids = new Set(),
+  dupeCount = 0,
   nodeType = ``,
 }) => {
   const data = await request("https://content.wpgraphql.com/graphql", query, {
@@ -32,6 +33,7 @@ const reportDuplicateNodesIds = async ({
 
   data?.extensionPlugins?.nodes?.forEach((node) => {
     if (ids.has(node.id)) {
+      dupeCount++
       console.log(`found duplicate ${nodeType} node with id ${node.id}`)
     } else {
       ids.add(node.id)
@@ -44,8 +46,11 @@ const reportDuplicateNodesIds = async ({
       endCursor: data.extensionPlugins?.pageInfo?.endCursor,
       ids,
       nodeType,
+      dupeCount,
     })
   } else {
-    console.log(`done. ${ids.size} total nodes fetched`)
+    console.log(
+      `done. ${ids.size} total unique nodes fetched. ${dupeCount} duplicates found.`
+    )
   }
 }
